@@ -39,8 +39,8 @@ Il file `db.sqlite3` è incluso nel repository e contiene dati demo già pronti.
 | Username | Password | Ruolo |
 |----------|----------|-------|
 | admin_demo | admin12345 | Amministratore |
-| organizer_demo | organizer12345 | Organizer |
-| attendee_demo | attendee12345 | Attendee |
+| organizer_demo | organizer12345 | Organizzatore evento |
+| attendee_demo | attendee12345 | Partecipante |
 
 ## Deploy
 Il sito è disponibile online all'indirizzo:  
