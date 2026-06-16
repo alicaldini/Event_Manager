@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p>{{ event.description }}</p>
+<p>📍 <strong>Luogo:</strong> {{ event.location }}</p>
+<p>📅 <strong>Data:</strong> {{ event.date|date:"d/m/Y H:i" }}</p>
+<p>👤 <strong>Organizzatore:</strong> {{ event.organizer.username }}</p>
+
+{% if user.is_authenticated %}
+    {% if user.role == 'organizer' and user == event.organizer %}
+        <a href="{% url 'events:update' event.pk %}" class="btn btn-warning">Modifica</a>
+        <a href="{% url 'events:delete' event.pk %}" class="btn btn-danger">Elimina</a>
+        <hr>
+        <h4>Partecipanti ({{ event.registrations.count }})</h4>
+        <ul>
+            {% for reg in event.registrations.all %}
+                <li>{{ reg.attendee.username }}</li>
+            {% empty %}
+                <li>Nessun partecipante ancora.</li>
+            {% endfor %}
+        </ul>
+    {% elif user.role == 'attendee' %}
+        {% if already_registered %}
+            <p class="text-success">✅ Sei già registrato a questo evento.</p>
+            <a href="{% url 'events:unregister' event.pk %}" class="btn btn-outline-danger">Annulla registrazione</a>
+        {% else %}
+            <a href="{% url 'events:register' event.pk %}" class="btn btn-success">Registrati all'evento</a>
+        {% endif %}
+    {% endif %}
+{% else %}
+    <p><a href="{% url 'accounts:login' %}">Accedi</a> per registrarti all'evento.</p>
+{% endif %}
+
+<a href="{% url 'events:list' %}" class="btn btn-secondary mt-3">← Torna alla lista</a>
+{% endblock %}
