@@ -33,22 +33,18 @@ python manage.py runserver
 ```
 
 ## Database
-Il file `db.sqlite3` è incluso nel repository e contiene dati demo già pronti.
+Il file di database SQLite incluso nel repository si chiama `db.sqlite3`. Si conferma che il file contiene già dati dimostrativi e gli account demo funzionanti descritti di seguito.
 
 ## Account demo
+I seguenti account sono già registrati nel database demo per testare l'applicazione:
 | Username | Password | Ruolo |
 |----------|----------|-------|
 | admin_demo | admin12345 | Amministratore |
 | organizer_demo | organizer12345 | Organizzatore evento |
 | attendee_demo | attendee12345 | Partecipante |
 
-## Deploy
-Il sito è disponibile online all'indirizzo:  
+## Link al Deploy Online
+L'applicazione è stata pubblicata ed è raggiungibile online al seguente indirizzo:    
 **https://alicaldini4.pythonanywhere.com**
 
-## Scenario di test
-1. Vai su https://alicaldini4.pythonanywhere.com
-2. Accedi come `organizer_demo` → crea un nuovo evento
-3. Fai logout e accedi come `attendee_demo` → registrati all'evento
-4. Verifica che l'attendee non veda il bottone "Crea Evento"
-5. Verifica che l'organizer veda la lista dei partecipanti
+Per valutare le funzionalità dei diversi ruoli in produzione, è possibile effettuare il login utilizzando gli account demo sopra elencati direttamente dal browser.
